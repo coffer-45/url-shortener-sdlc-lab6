@@ -1,0 +1,8 @@
+{% extends "links/base.html" %}
+{% block content %}<h1>Мої посилання</h1>
+{% for link in links %}
+<article><a href="{% url 'follow_link' link.code %}">{{ request.scheme }}://{{ request.get_host }}{% url 'follow_link' link.code %}</a>
+→ <a href="{{ link.original_url }}">{{ link.original_url }}</a> · переходів: {{ link.click_count }}
+<form method="post" action="{% url 'link_delete' link.pk %}">{% csrf_token %}<button type="submit">Видалити</button></form></article>
+{% empty %}<p>Поки що посилань немає.</p>{% endfor %}
+{% endblock %}

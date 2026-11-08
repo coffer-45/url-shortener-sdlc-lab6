@@ -1,0 +1,2 @@
+{% extends "links/base.html" %}
+{% block content %}<h1>Вхід</h1><form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Увійти</button></form>{% endblock %}
